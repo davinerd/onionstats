@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="ui raised very padded text container segment">
+  <h2 class="ui header">Search Syntax</h2>
+  <p>The query language is almost the same as the Elastic Search one.</p>
+  <p>Complex queries are not allowed <b>at the moment</b>. This means: no <b>OR</b>, <b>AND</b> or brackets.</p>
+    <p>Free text search is not allowed, i.e. you always need to specify a field in which search.</p>
+    <p>All the fields are assumed to be in <b>AND</b>, so the following query:</p>
+  <div class="ui message">
+        nickname:default nickname:unnamed
+  </div>
+    <p>is evaluated by the backend as:</p>
+    <div class="ui message">
+        nickname:default AND nickname:unnamed
+  </div>
+    <p>that will most likely return 0 entries since a nickname can't be default and unnamed at the same time.</p>
+    <p>You can specify the country in two ways: by typing into the search field or by selecting the country in the dropdown menu.
+    There is an important difference here: the countries in the dropbox menu are evaulated as <b>OR</b>, while the ones in the search field are evaluated as <b>AND</b> (as stated before).
+        The following query:</p>
+    <div class="ui message">
+        geo:it geo:ie
+  </div>
+    is evaluated as <i>geo:it <b>AND</b> geo:ie</i> while selecting the country <i>Italy</i> and <i>Ireland</i> on the dropdown the backend
+    create the query <i>geo:it <b>OR</b> geo:ie</i>
+    <br>
+    <p>You can also dublicate fields like <b>flags</b>: selecting one or more flags in the dropdown plus writing a query in the input field
+        can lead to interesting results. An example query may be <i>flags:exit</i> while selecting Fast and Stable in the dropdown. The resulting query will be:
+    </p>
+    <div class="ui message">
+        flags:exit AND (flags:fast OR flags:stable)
+  </div>
+</div>
+{% end %}

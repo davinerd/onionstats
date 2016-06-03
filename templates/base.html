@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onion Stats</title>
+    <link rel="stylesheet" type="text/css" href="{{ static_url('css/semantic.min.css') }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ static_url('css/menu.min.css') }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ static_url('css/container.min.css') }}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ static_url('css/font-awesome.min.css') }}" media="screen">
+    <style>
+        .footer {
+            font-size: 12px;
+        }
+    </style>
+    {% block style %} {% end %}
+</head>
+<body>
+    <div class="ui top fixed sticky menu inverted">
+        <div class="ui container">
+            <div class="item">
+                    Onion Stats
+            </div>
+            <div class="right menu">
+                <a class="item" href="/syntax">Syntax</a>
+                <a class="item" href="/help">Help</a>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+
+    {% block content %} {% end %}
+
+    <br />
+    <br />
+    <br />
+    <div class="ui inverted vertical footer segment">
+        <div class="ui container">
+            <div class="ui stackable inverted ">
+                <div class="seven wide column">
+                    <div class="ui center aligned container">
+                    Data on this site is freely available under a CC0 no copyright declaration: To the extent possible under law, the Tor Project has waived all copyright and related or neighboring rights in the data. "Tor" and the "Onion Logo" are registered trademarks of The Tor Project, Inc.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ static_url('js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static_url('js/semantic.min.js') }}"></script>
+    {% block scripts %}
+    {% end %}
+</body>
+</html>
